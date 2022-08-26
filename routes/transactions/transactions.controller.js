@@ -3,19 +3,18 @@ const {
   getLatestPortfolioForToken,
   getPortfolioPerTokenOnDate,
   getPortfolioForTokenOnDate,
-} = require("../../models/transactions.model");
+} = require("../../models/transactions.model.js");
 
 async function httpGetLatestPortfolioPerToken(req, res) {
   const success = await getLatestPortfolioPerToken();
+  //console.log("success", success);
   if (!success) {
     return res.status(400).json({
       error: "Please contact IT Support",
     });
   }
 
-  return res.status(200).json({
-    ok: true,
-  });
+  return res.status(200).json(success);
 }
 
 async function httpGetLatestPortfolioForToken(req, res) {

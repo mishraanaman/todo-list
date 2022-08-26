@@ -1,7 +1,8 @@
-const http = require('http');
+console.log("----💰💰  Welcome to Crypto Portfolio Viewer  💰💰----");
 
+const http = require('http');
 const app = require('./app');
-const { loadTransactionsData } = require("./models/transactions.model");
+const { loadTransactionsData } = require("./models/transactions.model.js");
 
 const PORT = process.env.PORT || 8000;
 
