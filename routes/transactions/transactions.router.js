@@ -11,7 +11,7 @@ const transactionsRouter = express.Router();
 
 transactionsRouter.get("/", httpGetLatestPortfolioPerToken);
 transactionsRouter.get("/:token", httpGetLatestPortfolioForToken);
-transactionsRouter.get("/:date", httpGetPortfolioPerTokenOnDate);
-transactionsRouter.get("/:token/:date", httpGetPortfolioForTokenOnDate);
+transactionsRouter.get("/date/:date", httpGetPortfolioPerTokenOnDate);
+transactionsRouter.get("/:token/date/:date", httpGetPortfolioForTokenOnDate);
 
 module.exports = transactionsRouter;

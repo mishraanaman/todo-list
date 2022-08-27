@@ -27,9 +27,7 @@ async function httpGetLatestPortfolioForToken(req, res) {
     });
   }
 
-  return res.status(200).json({
-    ok: true,
-  });
+  return res.status(200).json(success);
 }
 
 async function httpGetPortfolioPerTokenOnDate(req, res) {
@@ -42,9 +40,7 @@ async function httpGetPortfolioPerTokenOnDate(req, res) {
     });
   }
 
-  return res.status(200).json({
-    ok: true,
-  });
+  return res.status(200).json(success);
 }
 
 async function httpGetPortfolioForTokenOnDate(req, res) {
@@ -52,15 +48,13 @@ async function httpGetPortfolioForTokenOnDate(req, res) {
   const date = req.params.date;
 
   const success = await getPortfolioForTokenOnDate(token, date);
-  if (!success) {
+  if (!success && success !=0) {
     return res.status(400).json({
       error: "Please contact IT Support",
     });
   }
 
-  return res.status(200).json({
-    ok: true,
-  });
+  return res.status(200).json(success);
 }
 
 module.exports = {
