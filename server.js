@@ -1,6 +1,7 @@
 console.log("----💰💰  Welcome to Crypto Portfolio Viewer  💰💰----");
 
 const http = require('http');
+require('dot-env').config();
 const app = require('./app');
 const { loadTransactionsData } = require("./models/transactions.model.js");
 
