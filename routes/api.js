@@ -1,9 +1,12 @@
 const express = require('express');
 
-const transactionsRouter = require('./transactions/transactions.router');
+const todosRouter = require('./todos/todos.router');
+
+const loginRouter = require('./login/login.router')
 
 const api = express.Router();
 
-api.use("/transactions", transactionsRouter);
+api.use("/login",loginRouter)
+api.use("/todos", todosRouter);
 
 module.exports = api;

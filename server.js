@@ -1,20 +1,16 @@
-console.log("----💰💰  Welcome to Crypto Portfolio Viewer  💰💰----");
+console.log("----  Welcome to Tutor Bin Assignment ----");
 
-const http = require('http');
-require('dot-env').config();
-const app = require('./app');
-const { loadTransactionsData } = require("./models/transactions.model.js");
+const fs = require("fs");
+const http = require("http");
+require("dotenv").config();
+console.log("xxxxx");
+
+const app = require("./app");
 
 const PORT = process.env.PORT || 8000;
-
+console.log(PORT)
 const server = http.createServer(app);
 
-async function startServer() {
-  await loadTransactionsData();
-  
-  server.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}...`);
-  });
-}
-
-startServer();
+server.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}...`);
+});

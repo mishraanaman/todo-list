@@ -1,8 +1,4 @@
-const {
-  fetchAllTodo,
-  fetchTodoByID
-
-} = require("../../models/todos.model.js");
+const { fetchAllTodo, fetchTodoByID } = require("../../models/todos.model.js");
 
 async function httpFetchAllTodo(req, res) {
   const success = await fetchAllTodo();
@@ -29,9 +25,7 @@ async function httpFetchTodoByID(req, res) {
   return res.status(200).json(success);
 }
 
-
-
 module.exports = {
   httpFetchAllTodo,
-  httpFetchTodoByID
+  httpFetchTodoByID,
 };
