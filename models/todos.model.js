@@ -1,3 +1,4 @@
+const { option } = require('yargs');
 const todos = require('./todos.mongo')
 let todo =['play', 'fun']
 //Given no parameters, return all the TODO
@@ -19,6 +20,9 @@ async function createTodo(obj){
     return response;
 }
 
+async function updateTodoByID(id, updatedData, options){
+    return await todos.findOneAndUpdate(id, updatedData, options)
+}
 function removeTodoByID(id) {
     const obj = {
       todoNumber: id,
@@ -32,5 +36,6 @@ module.exports = {
   fetchAllTodo,
   createTodo,
   fetchTodoByID,
+  updateTodoByID,
   removeTodoByID,
 };

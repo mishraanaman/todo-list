@@ -1,4 +1,4 @@
-const { fetchAllTodo, fetchTodoByID, createTodo, removeTodoByID} = require("../../models/todos.model.js");
+const { fetchAllTodo, fetchTodoByID, createTodo, updateTodoByID, removeTodoByID} = require("../../models/todos.model.js");
 const { create } = require("../../models/todos.mongo.js");
 
 async function httpFetchAllTodo(req, res) {
@@ -61,7 +61,19 @@ async function httpCreateTodo(req, res) {
   return res.status(201).json(success);
 }
 
+async function httpUpdateTodoByID(req, res){
+  try {
+    const id = req.params.id;
+    const updatedData = req.body;
+    const options = { new: true };
 
+    const result = await updateTodoByID(id, updatedData, options);
+
+    res.send(result);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+}
 async function httpRemoveTodoByID(req, res) {
   const id = req.params.id;
 
@@ -86,6 +98,7 @@ module.exports = {
   httpFetchAllTodo,
   httpFetchTodoByID,
   httpCreateTodo,
+  httpUpdateTodoByID,
   httpRemoveTodoByID,
   
 };
