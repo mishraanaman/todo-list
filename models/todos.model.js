@@ -20,14 +20,11 @@ async function createTodo(obj){
 }
 
 function removeTodoByID(id) {
-  const todo = fetchTodoByID(id);
-  if(todo){
     const obj = {
       todoNumber: id,
     };
     const response = todos.deleteOne(obj);
     return response;
-  }
 }
 
 

@@ -58,7 +58,6 @@ async function httpCreateTodo(req, res) {
       error: "Please contact IT Support",
     });
   }
-
   return res.status(201).json(success);
 }
 
@@ -66,12 +65,19 @@ async function httpCreateTodo(req, res) {
 async function httpRemoveTodoByID(req, res) {
   const id = req.params.id;
 
-  const success = await removeTodoByID(id);
-  if (!success) {
+  const todo = await fetchTodoByID(id);
+  let success ={}  
+  if (todo) {
+    success = await removeTodoByID(id);
+    if (!success) {
+      return res.status(400).json({
+        error: "Please contact IT Support",
+      });
+    }
+  } else
     return res.status(400).json({
-      error: "Please contact IT Support",
+      error: "TODO not found for this ID",
     });
-  }
 
   return res.status(200).json(success);
 }
